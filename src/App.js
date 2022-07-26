@@ -13,12 +13,23 @@ export default function App() {
 
     const [cartItem, setCardItem] = useState([])
 
+    const addToCart = (product) => {
+        const productExit = cartItem.find((item) => item.id === product.id)
+
+        if (productExit) {
+            setCardItem(cartItem.map((item) => (
+                item.id === product.id ?
+                    { ...productExit, qty: productExit.qty + 1 } : item
+            )))
+        }
+    }
+
     return (
         <>
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path='/' element={<Pages productItems={productItems} />} />
+                    <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} />} />
                 </Routes>
             </BrowserRouter>
         </>
