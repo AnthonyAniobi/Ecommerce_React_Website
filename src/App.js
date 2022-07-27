@@ -7,6 +7,7 @@ import Pages from './pages/Pages';
 import Data from './components/flashDeals/Data';
 import Cart from './common/cart/Cart';
 import Sdata from './components/MainPage/Sdata';
+import Footer from './common/footer/Footer';
 
 export default function App() {
     // step 1: fetch data from database
@@ -48,6 +49,7 @@ export default function App() {
                     <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} />} />
                     <Route path='/cart' element={<Cart cartItem={cartItem} addToCart={addToCart} decreaseQty={decreaseQty} />} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </>
     )
