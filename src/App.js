@@ -6,11 +6,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pages from './pages/Pages';
 import Data from './components/flashDeals/Data';
 import Cart from './common/cart/Cart';
+import Sdata from './components/MainPage/Sdata';
 
 export default function App() {
     // step 1: fetch data from database
 
     const { productItems } = Data
+
+    const { shopItems } = Sdata
 
     const [cartItem, setCartItem] = useState([])
 
@@ -42,7 +45,7 @@ export default function App() {
             <BrowserRouter>
                 <Header cartItem={cartItem} />
                 <Routes>
-                    <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} />} />
+                    <Route path='/' element={<Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} />} />
                     <Route path='/cart' element={<Cart cartItem={cartItem} addToCart={addToCart} decreaseQty={decreaseQty} />} />
                 </Routes>
             </BrowserRouter>
